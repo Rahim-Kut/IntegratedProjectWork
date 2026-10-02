@@ -7,7 +7,7 @@ A team-developed mall simulation from Integrated Project Work at Örebro Univers
 
 ![Original facility selector and information panels from the team's final demo](media/interface-overview.png)
 
-*The team-developed interface, shown in the May 2026 final presentation.*
+*The team-developed interface.*
 
 ## The project
 
