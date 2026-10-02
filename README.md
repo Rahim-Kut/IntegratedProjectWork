@@ -55,4 +55,4 @@ In the original project, I also added and maintained popup and HUD tests within 
 
 ## Project scope
 
-This case study includes a standalone adaptation of my selector. The complete team system remains in private course repositories. The project context and screenshots come from the team's final demo and report.
+This case study includes a standalone adaptation of my selector. The complete team system remains in private course repositories.
