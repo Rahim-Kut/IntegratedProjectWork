@@ -1,6 +1,6 @@
 extends PopupPanel
 
-# Adapted from Abdulrahim's original room selector, commits 53d2777–f5c42a2.
+# Adapted from Abdulrahim's original room selector for standalone use.
 signal room_type_selected(tile_data: Dictionary, room_type_id: String)
 signal selection_cancelled
 

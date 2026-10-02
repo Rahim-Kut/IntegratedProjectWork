@@ -1,6 +1,6 @@
 extends GutTest
 
-# Based on the original popup tests in Abdulrahim's commit f5c42a2.
+# Based on the popup tests Abdulrahim added to the original simulator.
 const POPUP_SCENE = preload("res://view/room_type_popup.tscn")
 var popup: PopupPanel
 

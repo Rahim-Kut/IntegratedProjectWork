@@ -6,6 +6,8 @@ The project uses a Godot application for the visual simulation and HCI. Logistic
 
 The interface is organized around views and controllers. Views include the HUD, facility selector and information popups. Controllers coordinate input, the selected entity, the active view and information requests. A shared world model holds simulation state.
 
+`HUDController` handles interface actions, `InputController` handles clicks in the simulation, and `MQTTController` processes incoming data for the displays. A separate `Controller` script holds shared interaction state, such as the selected entity and active facility view.
+
 ```mermaid
 flowchart TD
     User[User interaction] --> Views[HUD and popups]
@@ -39,7 +41,3 @@ A single click identifies the selected facility. The HCI requests its informatio
 A double-click requests entry into the facility view. The input handler checks that the facility exists and supports an interior view. The HUD then switches to the facility actions.
 
 The exit action closes the interior, stops the relevant information request, resets the active facility and restores the mall menu. This interaction combines my navigation and HUD work with the team's facility renderer and MQTT integration.
-
-## Testing in the team project
-
-GUT tests exercise popup creation, selection/cancellation signals and controller behavior. GitHub Actions automates the project build and GUT execution on pull requests. My contribution was adding and maintaining relevant tests; the workflow was developed by teammates.

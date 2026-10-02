@@ -21,8 +21,6 @@ The tests check selection payloads, replacing options when the popup reopens, an
 
 Verified locally with Godot 4.5.1 and GUT 9.5.0: **3 tests and 11 assertions passed**. The main scene also started successfully in headless mode. The original simulator's full test suite was not rerun as part of this example.
 
-## Provenance
+## Original feature and adaptations
 
-The selector is based on my original commits `53d2777`, `d3fc76f`, `d9a0af4` and `f5c42a2` in the private simulator repository. The test design is based on the popup tests I introduced in `f5c42a2`.
-
-For this standalone adaptation, the paths and scene layout were simplified, types were added, tile data is copied when opened, and old options are removed immediately during refresh. The small application around the popup, extended assertions and example CI workflow were added for this showcase. They are separate from the original course submission.
+The selector and test design are adapted from the initial room-type popup and tests I implemented for the simulator. Paths and scene layout were simplified, and typing, tile copying and option refresh were improved. The surrounding demo application, extended test assertions and CI workflow were added for this showcase.
