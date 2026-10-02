@@ -1,0 +1,28 @@
+name: Facility selection tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:mono-4.5.1
+    defaults:
+      run:
+        working-directory: examples/facility-selection
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GUT 9.5.0
+        run: git clone --depth 1 --branch v9.5.0 https://github.com/bitwes/Gut.git /tmp/showcase-gut
+      - name: Copy GUT plugin
+        run: cp -R /tmp/showcase-gut/addons .
+      - name: Import the example
+        run: godot --headless --import --quit
+      - name: Run GUT tests
+        run: godot --headless -s addons/gut/gut_cmdln.gd -gdir=res://test/unit -gexit
