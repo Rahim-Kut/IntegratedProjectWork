@@ -22,4 +22,4 @@ The figures are simulation outputs shown in the presentation. The chart renderer
 
 ## Source and credit
 
-The screenshots in this showcase come from the HCI team's **Final Demo**, May 2026. The team consisted of Abdulrahim, Jesper, Milkias, Sarah and Taiba. The screenshots document the original team interface; [my contributions](../README.md#my-contributions) are described separately from the complete feature set.
+The screenshots in this showcase come from the HCI team's **Final Demo**, May 2026. The screenshots document the original team interface; [my contributions](../README.md#my-contributions) are described separately from the complete feature set.
