@@ -22,4 +22,4 @@ The original team interface provides controls for creating, inspecting and modif
 
 The figures are simulation outputs. The chart implementation was team work; my contribution concerned shared UI styling and integration.
 
-The screenshots come from the HCI team's final demo and report. These are features of the complete original system; [my contributions](../README.md#my-contributions) and the standalone code example are described in the README.
+These are features of the complete original system; [my contributions](../README.md#my-contributions) and the standalone code example are described in the README.
