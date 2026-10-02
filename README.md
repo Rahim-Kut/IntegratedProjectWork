@@ -53,10 +53,4 @@ The example passed **3 tests with 11 assertions** locally. Its documentation inc
 
 I added and maintained GUT tests for interface elements and controllers, including popup signals, facility selection and HUD behavior. The team's GitHub Actions workflow, developed by teammates, built the C# project and ran GUT on pull requests to `main`.
 
-## Project credit
-
-The HCI team consisted of Abdulrahim Kuteifan, Jesper Tsuranov, Milkias Michael Teklesenbet, Sarah Wattar and Taiba Abdul Karim. I also collaborated with Hoda Saleh on facility-spawner integration. Additional contributors developed the shared simulator and the other modules.
-
-The simulation engine, agent movement, facility renderer, chart implementation and MQTT client were developed by other contributors or jointly within the project. The original-interface screenshots are team work; the chart renderer was principally developed by Milkias.
-
 This repository contains the case study and a standalone adaptation of my selector. The complete system remains in the private course repositories.
