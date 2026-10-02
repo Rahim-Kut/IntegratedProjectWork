@@ -34,4 +34,4 @@ flowchart TD
 
 ## Communication tradeoff
 
-MQTT carries messages between the separate modules. HCI and the simulation share a Godot project, so local interactions also use signals, direct calls and shared state. This made integration easier, but increased coupling between those components. The team's final report identifies clearer interfaces between HCI and simulation as a future architectural improvement.
+MQTT carries messages between the separate modules. HCI and the simulation share a Godot project, so local interactions also use signals, direct calls and shared state. This made integration easier, but increased coupling between those components.
