@@ -18,7 +18,7 @@ The May 2026 HCI final presentation shows the team-developed interface for contr
 
 ![Original chart showing mall revenue per simulation hour](../media/mall-revenue.png)
 
-The figures are simulation outputs shown in the presentation. The chart renderer was principally developed by Milkias; my work concerned shared UI styling and integration.
+The figures are simulation outputs shown in the presentation. My work concerned shared UI styling and integration.
 
 ## Source and credit
 
