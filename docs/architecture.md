@@ -1,12 +1,17 @@
 # Architecture and interaction flows
 
-The project uses a Godot application for the visual simulation and HCI. Logistics, Meeple Brain and Pathfinding run as separate modules, with MQTT carrying requests and updates between them.
+The project uses Godot for the visual simulation and HCI. Logistics, Meeple Brain and Pathfinding are separate modules connected through MQTT.
 
-## Within the Godot application
+## Inside Godot
 
-The interface is organized around views and controllers. Views include the HUD, facility selector and information popups. Controllers coordinate input, the selected entity, the active view and information requests. A shared world model holds simulation state.
+The HCI follows an adapted Model-View-Controller structure. Views display information and emit user-action signals. Controllers coordinate these actions and incoming module data.
 
-`HUDController` handles interface actions, `InputController` handles clicks in the simulation, and `MQTTController` processes incoming data for the displays. A separate `Controller` script holds shared interaction state, such as the selected entity and active facility view.
+| Component | Responsibility |
+|---|---|
+| HUD controller | Connects menu and popup signals to interface actions and information requests. |
+| Input controller | Handles clicks in the simulation, entity selection and facility navigation. |
+| MQTT controller | Manages information requests and processes incoming data for the displays. |
+| Shared controller state | Holds selected entities, the active facility view and the current chart. |
 
 ```mermaid
 flowchart TD
@@ -21,23 +26,12 @@ flowchart TD
     Broker <--> Modules[Logistics, Meeple Brain and Pathfinding]
 ```
 
-The diagram shows responsibilities and the main communication paths. My contributions focused on the HCI views, parts of the input and HUD behavior, and collaborative integration with the existing MQTT interface.
+## Interaction flows
 
-## Facility selection
+- **Create a facility:** choose a type and name, then select a position. The HUD and input controllers pass the selection to the simulator's facility spawner. I implemented the initial selector and its tests; naming and placement integration involved multiple contributors.
+- **Inspect an entity:** a single click identifies a facility or meeple and requests its information from the relevant module. Incoming data is validated and formatted for the display; chart data has its own validation path.
+- **Enter and leave a facility:** double-click enters an available interior and changes the HUD actions. On exit, the interface clears facility state, stops the relevant information request and restores the mall controls. This combines my navigation and HUD work with the team's renderer and information integration.
 
-1. The user selects the facility creation action.
-2. The facility-type popup displays selection buttons.
-3. Choosing a type emits a signal carrying the selection to the controller.
-4. The placement interaction hands the selected facility data to the simulator's facility spawner.
+## Communication tradeoff
 
-I implemented the original selector and its selection/cancellation flow. Later category handling, naming and placement integration involved multiple contributors.
-
-## Inspecting a facility
-
-A single click identifies the selected facility. The HCI requests its information from Logistics over MQTT, and the returned data is presented through the shared information interface.
-
-## Entering and leaving a facility
-
-A double-click requests entry into the facility view. The input handler checks that the facility exists and supports an interior view. The HUD then switches to the facility actions.
-
-The exit action closes the interior, stops the relevant information request, resets the active facility and restores the mall menu. This interaction combines my navigation and HUD work with the team's facility renderer and MQTT integration.
+MQTT carries messages between the separate modules. HCI and the simulation share a Godot project, so local interactions also use signals, direct calls and shared state. This made integration easier, but increased coupling between those components. The team's final report identifies clearer interfaces between HCI and simulation as a future architectural improvement.

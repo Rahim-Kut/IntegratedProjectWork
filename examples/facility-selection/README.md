@@ -17,7 +17,7 @@ godot --headless --import --quit
 godot --headless -s addons/gut/gut_cmdln.gd -gdir=res://test/unit -gexit
 ```
 
-The tests check selection payloads, replacing options when the popup reopens, and cancellation without selection. The included GitHub Actions workflow is configured to run this example's tests automatically when the showcase is published.
+The tests check selection payloads, replacing options when the popup reopens, and cancellation without selection. The included GitHub Actions workflow runs this example's tests automatically on pushes and pull requests.
 
 Verified locally with Godot 4.5.1 and GUT 9.5.0: **3 tests and 11 assertions passed**. The main scene also started successfully in headless mode. The original simulator's full test suite was not rerun as part of this example.
 

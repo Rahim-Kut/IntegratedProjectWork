@@ -1,6 +1,8 @@
 # Final demo
 
-The May 2026 HCI final presentation shows the team-developed interface for controlling and inspecting the mall simulation.
+The original team interface provides controls for creating, inspecting and modifying the mall simulation.
+
+![Original facility selector and facility and agent information panels](../media/interface-overview.png)
 
 ## Features presented
 
@@ -18,8 +20,6 @@ The May 2026 HCI final presentation shows the team-developed interface for contr
 
 ![Original chart showing mall revenue per simulation hour](../media/mall-revenue.png)
 
-The figures are simulation outputs shown in the presentation. My work concerned shared UI styling and integration.
+The figures are simulation outputs. The chart implementation was team work; my contribution concerned shared UI styling and integration.
 
-## Source and credit
-
-The screenshots in this showcase come from the HCI team's **Final Demo**, May 2026. The screenshots document the original team interface; [my contributions](../README.md#my-contributions) are described separately from the complete feature set.
+The screenshots come from the HCI team's final demo and report. These are features of the complete original system; [my contributions](../README.md#my-contributions) and the standalone code example are described in the README.

@@ -5,15 +5,15 @@ A team-developed mall simulation from Integrated Project Work at Örebro Univers
 **My role:** Feature development, UI integration and testing within the simulator/HCI module  
 **Simulator technologies:** Godot, GDScript, C#/.NET, MQTT, JSON, GUT and GitHub Actions
 
-![Original facility selector and information panels from the team's final demo](media/interface-overview.png)
+![Original mall view during facility creation](media/facility-placement.png)
 
-*The team-developed interface.*
+*The team-developed mall view during facility creation.*
 
 ## The project
 
-Users can create and inspect facilities and agents, navigate into facilities, change agent tasks, adjust product prices and restocking, and view statistics. The interface also supports simulation time and floor switching.
+Users can create and inspect facilities and agents, enter facilities, change agent tasks, adjust product prices and restocking, and view statistics. Simulation time and floor controls support navigation.
 
-[See the final-demo features and statistics screenshot](docs/final-demo.md).
+[See the interface panels and final-demo features](docs/final-demo.md).
 
 ## System architecture
 
@@ -25,7 +25,7 @@ flowchart LR
     Broker <--> Pathfinding[Pathfinding]
 ```
 
-The modules exchange requests and updates as MQTT messages with JSON payloads. Within Godot, views and controllers coordinate user input, information displays and shared simulation state.
+The modules exchange requests and updates as MQTT messages with JSON payloads. Within Godot, signals, controllers and shared state coordinate interface actions and simulation behavior.
 
 [Read the architecture and interaction flows](docs/architecture.md).
 
@@ -34,23 +34,25 @@ The modules exchange requests and updates as MQTT messages with JSON payloads. W
 | Area | My contribution |
 |---|---|
 | Facility selection | Implemented the initial facility-type popup, generated selection buttons, connected selection and cancellation signals, and added GUT tests. |
-| HUD navigation | Added view-dependent controls, facility information and the return-to-mall interaction, with tests for the revised HUD behavior. |
-| Click interactions | Used single-click for information requests and double-click to enter a facility. Added checks for unknown facilities and facilities without an interior view. |
+| HUD navigation | Added view-dependent controls and the return-to-mall interaction, with tests for menu behavior and facility-state resets. |
+| Click interactions | Used single-click for information and double-click to enter a facility, with guards for unknown facilities and unavailable interiors. |
 | UI reliability | Fixed duplicate menu signal connections and added or maintained popup and controller tests. |
-| Base UI theme | Introduced the initial button and popup theme, which teammates subsequently expanded. |
-| Collaborative UI work | Co-developed information popups, the burger menu and the final visual design with teammates. |
-| Collaborative integration | Helped connect information panels to MQTT data, wire facility selection to naming and placement, and maintain tests after refactoring. |
+| Collaborative integration | Co-developed information popups, MQTT-backed UI flows, facility naming and placement integration, the burger menu and final visual design. |
 
-The initial implementations above evolved through later team contributions. The final interface screenshots show that shared result.
+The initial implementations above evolved through later team contributions. The screenshots show the shared result.
 
-## Runnable code example
+## Engineering challenge: changing views consistently
 
-[Facility selection example](examples/facility-selection/README.md): a standalone Godot adaptation of my original selector, with generated buttons, selection/cancellation signals and GUT tests. It includes a small application that runs independently of the original system.
+Facility navigation had to keep the selected entity, menu actions and information requests aligned with the active view. I separated inspection from entry, added facility-specific HUD actions, and reset facility state and stopped its information request when returning to the mall. GUT tests checked the menu actions in each view and the state reset on exit.
 
-The example passed **3 tests with 11 assertions** locally. Its documentation includes run instructions and explains the adaptations; a separate GitHub Actions workflow is configured to run its tests.
+## Code and testing
 
-## Testing in the original project
+[Facility selection example](examples/facility-selection/README.md): a standalone Godot adaptation of my original selector, with generated buttons, selection/cancellation signals and GUT tests.
 
-I added and maintained GUT tests for interface elements and controllers, including popup signals, facility selection and HUD behavior. The team's GitHub Actions workflow, developed by teammates, built the C# project and ran GUT on pull requests to `main`.
+It passed **3 tests with 11 assertions** locally. GitHub Actions runs its tests on pushes and pull requests. The example README explains how to run it and what was adapted.
 
-This repository contains the case study and a standalone adaptation of my selector. The complete system remains in the private course repositories.
+In the original project, I also added and maintained popup and HUD tests within the team's automated testing workflow.
+
+## Project scope
+
+This case study includes a standalone adaptation of my selector. The complete team system remains in private course repositories. The project context and screenshots come from the team's final demo and report.
